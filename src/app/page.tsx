@@ -1,5 +1,10 @@
-import { UseHookComponent } from './hooks-components/useHookComponent'
+import Link from 'next/link'
 
 export default function Home() {
-	return <div>v<UseHookComponent/></div>
+	return <div>
+		<div className='flex flex-col'>
+			<Link href="/use-hook-component">UseHookComponent</Link>
+			<Link href="/use-action-state-component">UseActionStateComponent</Link>
+		</div>
+	</div>
 }

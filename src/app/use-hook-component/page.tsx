@@ -1,7 +1,7 @@
 import { use } from 'react'
-import { fetchPastes } from '../shared/api'
+import { fetchPastes } from '../../shared/api'
 
-export function UseHookComponent() {
+export default function Page() {
 	const pastes = use(fetchPastes())
 	const rows = pastes.map(p => <div className='overflow-hidden' key={p.id}>{p.text}</div>)
 
