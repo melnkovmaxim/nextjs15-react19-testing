@@ -5,6 +5,7 @@ export default function Home() {
 		<div className='flex flex-col'>
 			<Link href="/use-hook-component">UseHookComponent</Link>
 			<Link href="/use-action-state-component">UseActionStateComponent</Link>
+			<Link href="/use-form-status-component">UseFormStatusComponent</Link>
 		</div>
 	</div>
 }

@@ -3,7 +3,7 @@ import { useActionState } from 'react'
 
 interface ICreateActionState {
 	error?: string;
-	email: string;
+	email?: string;
 }
 
 const users: unknown[] = []
@@ -26,7 +26,7 @@ const createUserAction = ({ refetchUsers }: { refetchUsers: () => void }) =>
 
 			await refetchUsers()
 
-			return { email: '' }
+			return { }
 		}
 		catch {
 			return {
@@ -39,17 +39,15 @@ const createUserAction = ({ refetchUsers }: { refetchUsers: () => void }) =>
 const refreshUsers = () => { }
 
 export default function Page() {
-	const [state, dispatch, isPending] = useActionState(createUserAction({ refetchUsers: refreshUsers}), {});
+	const [state, dispatch, isPending] = 
+		useActionState(createUserAction({ refetchUsers: refreshUsers }), { });
 	
 	return (
 		<div>
-			<p>
-				есть баг email сбрасывается всегда
-				{JSON.stringify(users)}
-			</p>
+			<p>state: {JSON.stringify(users)}</p>
 
 			<form action={dispatch}>
-				<input className='bg-green-400' name='email' type='email' disabled={isPending}></input>
+				<input className='bg-green-400' name='email' defaultValue={state.email} disabled={isPending}></input>
 				<button className='bg-red-300' type='submit' disabled={isPending}>Add</button>
 				{state.error && <div>{state.error}</div>}
 			</form>
